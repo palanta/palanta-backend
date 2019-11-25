@@ -2,8 +2,8 @@ from abc import abstractmethod
 
 
 class Node:
-    def __init__(self, id):
-        self.id = id
+    def __init__(self):
+        pass
 
     @abstractmethod
     def call(self, *args):
