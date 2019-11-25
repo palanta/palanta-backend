@@ -8,6 +8,10 @@ def get_programs():
     return database.get_palanta_db().programs
 
 
+def get_program(id):
+    return database.get_palanta_db().programs.find_one({'id': id})
+
+
 def create_program(name):
     database.get_palanta_db().programs.insert_one({
         'id': uuid.uuid4().hex,
@@ -19,14 +23,19 @@ def delete_program(id):
     database.get_palanta_db().programs.delete_one({'id': id})
 
 
-@app.route('/programs', methods=['GET', 'POST', 'DELETE'])
+@app.route('/programs', methods=['GET', 'POST'])
 def programs():
     if request.method == 'GET':
-        return get_programs(), 200
-    elif request.method == 'POST':
+        return get_programs()
+    if request.method == 'POST':
         create_program(request.json['name'])
-        return '', 200
-    elif request.method == 'DELETE':
-        delete_program(request.json['id'])
-        return '', 200
+        return ''
+
+
+@app.route('/programs/<id>', methods=['GET', 'DELETE'])
+def program(id):
+    if request.method == 'GET':
+        return get_program(id)
+    if request.method == 'DELETE':
+        return delete_program(id)
 
