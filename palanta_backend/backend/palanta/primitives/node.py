@@ -10,4 +10,6 @@ class Node:
         pass
 
     def __call__(self, *args):
+        # Todo verify args and results
         results = self.call(*args)
+        return results
