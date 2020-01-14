@@ -16,7 +16,7 @@ def upload():
     return image_id, 200
 
 
-@app.route('/images/<image_id>')
+@app.route('/images/<image_id>', methods=['GET'])
 def images(image_id):
     if not image_manager.exists(image_id):
         return 'not_found', 404
