@@ -1,4 +1,4 @@
 from . import app
-from . import binarize
+from . import basic_processing
 from . import images
 from . import metadata

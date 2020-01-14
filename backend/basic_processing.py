@@ -17,3 +17,13 @@ def binarize():
         return 'invalid_image', 400
     binarized = np.where(image > threshold * 255, 255, 0)
     return image_manager.save(binarized)
+
+
+@app.route('/invert', methods=['GET'])
+def invert():
+    image_id = request.args.get('image')
+    image = image_manager.load(image_id)
+    if image is None:
+        return 'invalid_image', 400
+    inverted = 255 - image
+    return image_manager.save(inverted)
