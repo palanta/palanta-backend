@@ -19,6 +19,10 @@ def exists(image_id):
     return os.path.exists(get_path_from_id(image_id))
 
 
+def load(image_id):
+    return cv2.imread(get_path_from_id(image_id))
+
+
 def save(image):
     image_id = _hash(image)
     filename = get_path_from_id(image_id)
