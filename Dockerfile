@@ -1,8 +1,9 @@
 FROM python:3.8
 
 RUN pip install flask
-RUN pip install pymongo
 RUN pip install numpy
+RUN pip install opencv-python
+RUN pip install opencv-contrib-python
 
 ENV FLASK_APP backend/main.py
 
