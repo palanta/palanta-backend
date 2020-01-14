@@ -6,6 +6,16 @@ from . import app
 from . import image_manager
 
 
+@app.route('/greyscale', methods=['GET'])
+def greyscale():
+    image_id = request.args.get('image')
+    image = image_manager.load(image_id)
+    if image is None:
+        return 'invalid_image', 400
+    image = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    return image_manager.save(image)
+
+
 @app.route('/binarize', methods=['GET'])
 def binarize():
     image_id = request.args.get('image')
