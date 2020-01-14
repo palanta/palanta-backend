@@ -9,4 +9,4 @@ ENV FLASK_APP backend/main.py
 
 COPY backend backend
 
-CMD flask run
+CMD flask run --host=0.0.0.0 --port=80
