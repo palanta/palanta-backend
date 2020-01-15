@@ -1,6 +1,7 @@
 FROM python:3.8
 
 RUN pip install flask
+RUN pip install flask_cors
 RUN pip install numpy
 RUN pip install opencv-python
 RUN pip install opencv-contrib-python
