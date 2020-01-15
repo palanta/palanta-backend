@@ -1,4 +1,5 @@
 from flask import request
+import numpy as np
 
 from . import app
 from . import image_manager
@@ -10,6 +11,10 @@ def metadata():
     image = image_manager.load(image_id)
     if image is None:
         return 'invalid_image', 400
+    image = image / 255.0
     return {
-        'shape': list(image.shape)
+        'shape': list(image.shape),
+        'mean': np.mean(image),
+        'median': np.median(image),
+        'std': np.std(image),
     }
