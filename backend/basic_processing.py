@@ -38,7 +38,7 @@ def otsu():
         return 'invalid_image', 400
     image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     result, _ = cv2.threshold(image, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    return str(result)
+    return str(result / 255.0)
 
 
 @app.route('/invert', methods=['GET'])
