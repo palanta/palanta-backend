@@ -3,14 +3,11 @@ from flask import request, send_file
 from . import app
 from . import image_manager
 
-UPLOAD_FOLDER = './tmp/'
-ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'gif', 'bmp'])
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+ALLOWED_EXTENSIONS = set(['jpg', 'jpeg', 'png', 'bmp', 'tif', 'tiff'])
 
 
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/images', methods=['POST'])

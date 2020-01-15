@@ -35,9 +35,7 @@ def save(image):
 def upload(file):
     temp_filename = get_path_from_id(str(uuid.uuid4()))
     file.save(temp_filename)
-    print('saved as ', temp_filename)
     image = cv2.imread(temp_filename)
-    print('loaded as ', temp_filename)
     os.remove(temp_filename)
     if image is None:
         return None
