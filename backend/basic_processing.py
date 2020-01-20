@@ -68,4 +68,3 @@ def hsv():
     image = image * np.array([[[h, s, v]]])
     image = cv2.cvtColor(image.astype(np.float32), cv2.COLOR_HSV2BGR)
     return image_manager.save(image)
-
